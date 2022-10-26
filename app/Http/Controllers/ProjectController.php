@@ -10,7 +10,7 @@ class ProjectController extends Controller
     //show all projects
     public function index() {
         return view('projects.index', [
-            'projects' => Project::latest()->filter(request(['tag']))->get()
+            'projects' => Project::latest()->filter(request(['tag', 'search']))->get()
         ]);
     }
 
