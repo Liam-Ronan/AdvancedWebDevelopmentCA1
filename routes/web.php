@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProjectController;
 use illuminate\Http\Request;
 use App\Models\Project;
 use Illuminate\Support\Facades\Route;
@@ -26,17 +27,9 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php'; */
 
 //All projects
-Route::get('/', function () {
-    return view('projects', [
-        'projects' => Project::all()
-    ]);
-});
+Route::get('/', [ProjectController::class, 'index']);
 
 //Single project
-Route::get('/projects/{project}', function(Project $project) {
+Route::get('/projects/{project}', [ProjectController::class, 'show']);
 
-        return view('project', [
-            'project' => $project
-        ]);
-
-});
+/* Common resource routes */
