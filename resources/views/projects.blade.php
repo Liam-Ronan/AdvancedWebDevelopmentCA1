@@ -1,7 +1,7 @@
 @extends('layout')
 
     @section('content')
-
+    @include('partials._search')
         <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
 
             @unless(count($projects) == 0)
@@ -9,10 +9,10 @@
             @foreach($projects as $project)
                 <div class="bg-gray-50 border border-gray-200 rounded p-6">
                     <div class="flex">
-                        <img class="hidden w-48 mr-6 md:block" src="images/no-image.png" alt=""/>
+                        <img class="hidden w-48 mr-6 md:block" src="{{asset('images/no-image.png')}}" alt=""/>
                         <div>
                             <h3 class="text-2xl">
-                                <a href="show.html">{{$project->title}}</a>
+                                <a href="/projects/{{$project->id}}">{{$project->title}}</a>
                             </h3>
                             <div class="text-xl font-bold mb-4">
                                 <h4>This project was created on {{$project->date_created}}</h4>
