@@ -34,8 +34,10 @@ Route::get('/', function () {
 });
 
 //Single project
-Route::get('/projects/{id}', function($id) {
-    return view('project', [
-        'project' => Project::find($id)
-    ]);
+Route::get('/projects/{project}', function(Project $project) {
+
+        return view('project', [
+            'project' => $project
+        ]);
+
 });
