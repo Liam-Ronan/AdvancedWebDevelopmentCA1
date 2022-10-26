@@ -7,46 +7,7 @@
             @unless(count($projects) == 0)
 
             @foreach($projects as $project)
-                <div class="bg-gray-50 border border-gray-200 rounded p-6">
-                    <div class="flex">
-                        <img class="hidden w-48 mr-6 md:block" src="{{asset('images/no-image.png')}}" alt=""/>
-                        <div>
-                            <h3 class="text-2xl">
-                                <a href="/projects/{{$project->id}}">{{$project->title}}</a>
-                            </h3>
-                            <div class="text-xl font-bold mb-4">
-                                <h4>This project was created on {{$project->date_created}}</h4>
-                            </div>
-
-                            <ul class="flex">
-                                <li
-                                    class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs"
-                                >
-                                    <a href="#">Laravel</a>
-                                </li>
-                                <li
-                                    class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs"
-                                >
-                                    <a href="#">API</a>
-                                </li>
-                                <li
-                                    class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs"
-                                >
-                                    <a href="#">Backend</a>
-                                </li>
-                                <li
-                                    class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs"
-                                >
-                                    <a href="#">Vue</a>
-                                </li>
-                            </ul>
-                            <div class="text-xl font-bold mb-4">
-                                <h4>Visit this projects website</h4>
-                                <a href="">{{$project->website}}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <x-project-card :project="$project"/>
             @endforeach
 
             @else
