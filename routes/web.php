@@ -28,7 +28,6 @@ require __DIR__.'/auth.php'; */
 //All projects
 Route::get('/', function () {
     return view('projects', [
-        'heading' => 'Latest Projects',
         'projects' => Project::all()
     ]);
 });
