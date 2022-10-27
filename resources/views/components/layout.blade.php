@@ -1,3 +1,4 @@
+{{-- Layout for most pages --}}
 <!DOCTYPE html>
 <html lang="en">
     <head>
