@@ -9,6 +9,9 @@ class Project extends Model
 {
     use HasFactory;
 
+    /* Used boot function in AppServiceProvider */
+    //protected $fillable = ['title', 'email', 'description', 'website', 'date_created', 'tags'];
+
     public function scopeFilter($query, array $filters) {
         if($filters['tag'] ?? false) {
             $query->where('tags', 'like', '%' . request('tag') . '%');

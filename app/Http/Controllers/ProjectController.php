@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
 {
@@ -24,5 +25,21 @@ class ProjectController extends Controller
     //show create form
     public function create() {
         return view('projects.create');
+    }
+
+    //store project data
+    public function store(Request $request) {
+        $formFields = $request->validate([
+            'title' => ['required', Rule::unique('projects', 'title')],
+            'tags'=> 'required',
+            'date_created' => 'required',
+            'website' => ['required', 'url'],
+            'email' => ['required', 'email'],
+            'description' => 'required'
+        ]);
+
+        Project::create($formFields);
+
+        return redirect('/');
     }
 }

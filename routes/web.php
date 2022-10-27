@@ -32,9 +32,11 @@ Route::get('/', [ProjectController::class, 'index']);
 //show create form
 Route::get('/projects/create', [ProjectController::class, 'create']);
 
+//store project Data
+Route::post('/projects', [ProjectController::class, 'store']);
+
 //Single project
 Route::get('/projects/{project}', [ProjectController::class, 'show']);
 
-//Store
 
 /* Common resource routes */
