@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('date_created');
             $table->string('website');
             $table->longText('description');
+            $table->string('email');
             $table->timestamps();
         });
     }

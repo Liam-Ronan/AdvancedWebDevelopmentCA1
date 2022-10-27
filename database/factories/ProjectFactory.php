@@ -21,7 +21,8 @@ class ProjectFactory extends Factory
             'tags' => 'JavaScript, api, CSS',
             'date_created' => $this->faker->date(),
             'website' => $this->faker->url(),
-            'description' => $this->faker->paragraph(),
+            'description' => $this->faker->paragraph(10),
+            'email' => $this->faker->email(),
         ];
     }
 }

@@ -27,17 +27,17 @@
         <title>Portfolio | View my portfolio projects</title>
     </head>
     <body class="mb-48">
-            <nav class="flex justify-between items-center mb-4">
+            <nav class="flex justify-between items-center mb-6 p-4">
                 <a href="/"><img class="w-24" src="{{asset('images/logo.png')}}" alt="" class="logo"/></a>
-                <ul class="flex space-x-6 mr-6 text-lg">
+                <ul class="flex space-x-4 mr-4 text-lg">
                     <li>
-                        <a href="register.html" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i>Register</a>
+                        <a href="register.html" class="hover:text-laravel"><i class="fa-solid fa-user-plus p-1"></i>Register</a>
                     </li>
                     <li>
-                        <a href="login.html" class="hover:text-laravel"><i class="fa-solid fa-arrow-right-to-bracket"></i>Login</a>
+                        <a href="login.html" class="hover:text-laravel"><i class="fa-solid fa-arrow-right-to-bracket p-1"></i>Login</a>
                     </li>
                     <li>
-                        <a href="create.html" class="hover:text-laravel"><i class="fa-solid fa-upload"></i>Post Project</a>
+                        <a href="/projects/create" class="hover:text-laravel"><i class="fa-solid fa-upload p-1"></i>Upload Project</a>
                     </li>
                 </ul>
             </nav>
@@ -45,7 +45,7 @@
             {{$slot}}
         </main>
         <footer class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-black text-white h-24 mt-24 opacity-90 md:justify-center">
-            <a href="create.html" class="absolute center-1/3 center-5 bg-black text-white py-2 px-5">Post Project</a>
+            <a href="/projects/create" class="absolute center-1/3 center-5 bg-black text-white py-2 px-5"><i class="fa-solid fa-upload p-2"></i>Upload Project</a>
         </footer>
     </body>
 </html>

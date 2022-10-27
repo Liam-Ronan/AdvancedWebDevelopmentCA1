@@ -29,6 +29,9 @@ require __DIR__.'/auth.php'; */
 //All projects
 Route::get('/', [ProjectController::class, 'index']);
 
+//show create form
+Route::get('/projects/create', [ProjectController::class, 'create']);
+
 //Single project
 Route::get('/projects/{project}', [ProjectController::class, 'show']);
 

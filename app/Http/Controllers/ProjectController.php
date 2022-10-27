@@ -20,4 +20,9 @@ class ProjectController extends Controller
             'project' => $project
         ]);
     }
+
+    //show create form
+    public function create() {
+        return view('projects.create');
+    }
 }
