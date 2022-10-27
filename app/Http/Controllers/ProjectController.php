@@ -49,16 +49,16 @@ class ProjectController extends Controller
         return redirect('/');
     }
 
-    //show update form
-    public function update(Project $project) {
-        return view('projects.update', ['project' => $project]);
+    //show edit form
+    public function edit(Project $project) {
+        return view('projects.edit', ['project' => $project]);
     }
 
 
      //Update project data
-     public function updateProject(Request $request, Project $project) {
+     public function update(Request $request, Project $project) {
         $formFields = $request->validate([
-            'title' => ['required'],
+            'title' => 'required',
             'tags'=> 'required',
             'date_created' => 'required',
             'website' => ['required', 'url'],
@@ -72,9 +72,9 @@ class ProjectController extends Controller
             $formFields['image'] = $request->file('image')->store('images', 'public');
         }
 
-        $project->create($formFields);
+        $project->update($formFields);
 
-        return redirect('/');
+        return back()->with('message', 'Project Updated successfully!');
     }
 
 }

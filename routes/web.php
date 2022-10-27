@@ -36,7 +36,7 @@ Route::get('/projects/create', [ProjectController::class, 'create']);
 Route::post('/projects', [ProjectController::class, 'store']);
 
 //show update Form
-Route::get('/projects/{project}/update', [ProjectController::class, 'update']);
+Route::get('/projects/{project}/edit', [ProjectController::class, 'edit']);
 
 //Update Project data
 Route::put('/projects/{project}', [ProjectController::class, 'update']);

@@ -29,7 +29,7 @@
                         <a href="https://test.com" target="_blank" class="block bg-black text-white mt-6 py-4 rounded-xl hover:opacity-80">
                             <i class="fa-solid fa-globe"></i> Visit Project Website: {{$project->website}}</a>
 
-                        <a href="/projects/{{$project->id}}/update" class="block bg-black text-white mt-6 py-4 rounded-xl hover:opacity-80">
+                        <a href="/projects/{{$project->id}}/edit" class="block bg-black text-white mt-6 py-4 rounded-xl hover:opacity-80">
                             <i class="fa-solid fa-pencil p-1"></i>Update</a>
                     </div>
                 </div>
