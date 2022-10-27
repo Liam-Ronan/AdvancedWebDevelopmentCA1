@@ -46,7 +46,7 @@ class ProjectController extends Controller
 
         Project::create($formFields);
 
-        return redirect('/');
+        return redirect('/')->with('message', 'Project uploaded successfully!');
     }
 
     //show edit form
