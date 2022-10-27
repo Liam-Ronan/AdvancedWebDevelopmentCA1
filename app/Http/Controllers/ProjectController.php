@@ -38,6 +38,8 @@ class ProjectController extends Controller
             'description' => 'required'
         ]);
 
+        /* File Upload */
+
         Project::create($formFields);
 
         return redirect('/');
