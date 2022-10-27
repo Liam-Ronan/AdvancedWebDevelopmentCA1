@@ -35,4 +35,6 @@ Route::get('/projects/create', [ProjectController::class, 'create']);
 //Single project
 Route::get('/projects/{project}', [ProjectController::class, 'show']);
 
+//Store
+
 /* Common resource routes */
