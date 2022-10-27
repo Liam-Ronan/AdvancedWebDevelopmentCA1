@@ -29,11 +29,17 @@ require __DIR__.'/auth.php'; */
 //All projects
 Route::get('/', [ProjectController::class, 'index']);
 
-//show create form
+//show create Form
 Route::get('/projects/create', [ProjectController::class, 'create']);
 
 //store project Data
 Route::post('/projects', [ProjectController::class, 'store']);
+
+//show update Form
+Route::get('/projects/{project}/update', [ProjectController::class, 'update']);
+
+//Update Project data
+Route::put('/projects/{project}', [ProjectController::class, 'update']);
 
 //Single project
 Route::get('/projects/{project}', [ProjectController::class, 'show']);

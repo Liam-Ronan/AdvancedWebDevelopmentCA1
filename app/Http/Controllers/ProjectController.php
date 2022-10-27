@@ -40,7 +40,6 @@ class ProjectController extends Controller
 
 
         /* File Upload */
-
         if($request->hasFile('image')) {
             $formFields['image'] = $request->file('image')->store('images', 'public');
         }
@@ -49,4 +48,33 @@ class ProjectController extends Controller
 
         return redirect('/');
     }
+
+    //show update form
+    public function update(Project $project) {
+        return view('projects.update', ['project' => $project]);
+    }
+
+
+     //Update project data
+     public function updateProject(Request $request, Project $project) {
+        $formFields = $request->validate([
+            'title' => ['required'],
+            'tags'=> 'required',
+            'date_created' => 'required',
+            'website' => ['required', 'url'],
+            'email' => ['required', 'email'],
+            'description' => 'required'  
+        ]);
+
+
+        /* File Upload */
+        if($request->hasFile('image')) {
+            $formFields['image'] = $request->file('image')->store('images', 'public');
+        }
+
+        $project->create($formFields);
+
+        return redirect('/');
+    }
+
 }
