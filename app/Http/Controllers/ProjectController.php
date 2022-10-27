@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -12,7 +11,7 @@ class ProjectController extends Controller
     //show all projects
     public function index() {
         return view('projects.index', [
-            'projects' => Project::latest()->filter(request(['tag', 'search']))->get()
+            'projects' => Project::latest()->filter(request(['tag', 'search']))->paginate(6)
         ]);
     }
 
@@ -41,6 +40,6 @@ class ProjectController extends Controller
 
         Project::create($formFields);
 
-        return redirect('/')->with('message', 'Project uploaded successfully!');
+        return redirect('/');
     }
 }
