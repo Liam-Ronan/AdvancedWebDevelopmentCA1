@@ -35,10 +35,15 @@ class ProjectController extends Controller
             'date_created' => 'required',
             'website' => ['required', 'url'],
             'email' => ['required', 'email'],
-            'description' => 'required'
+            'description' => 'required'  
         ]);
 
+
         /* File Upload */
+
+        if($request->hasFile('image')) {
+            $formFields['image'] = $request->file('image')->store('images', 'public');
+        }
 
         Project::create($formFields);
 
