@@ -41,10 +41,15 @@ class ProjectController extends Controller
 
 
         /* File Upload */
-        if($request->hasFile('image')) {
+  /*       if($request->hasFile('image')) {
             $formFields['image'] = $request->file('image')->store('images', 'public');
         }
+ */
 
+        $img = $request->file('image');
+        $fn = now()->timezone('Europe/Dublin')->format('Ymd_His') . $img->getClientOriginalName();
+        $img->move('img/', $fn);
+        
         Project::create([
             'uuid' => Str::uuid(),
             'title' => $request->title,
@@ -52,10 +57,11 @@ class ProjectController extends Controller
             'date_created' => $request->date_created,
             'website' => $request->website,
             'email' => $request->email,
-            'description' => $request->description       
+            'description' => $request->description,
+            'image' => $fn
         ]);
 
-        return redirect('/')->with('message', 'Project uploaded successfully!');
+        return redirect('/projects')->with('message', 'Project uploaded successfully!');
     }
 
     //show edit form
@@ -66,22 +72,29 @@ class ProjectController extends Controller
 
      //Update project data
      public function update(Request $request, Project $project) {
+        $img = $request->file('image');
+        $fn = now()->timezone('Europe/Dublin')->format('Ymd_His') . $img->getClientOriginalName();
+        $img->move('img/', $fn);
+
         $formFields = $request->validate([
             'title' => 'required',
             'tags'=> 'required',
             'date_created' => 'required',
             'website' => ['required', 'url'],
             'email' => ['required', 'email'],
-            'description' => 'required'  
+            'description' => 'required'
         ]);
 
 
         /* File Upload */
-        if($request->hasFile('image')) {
+/*         if($request->hasFile('image')) {
             $formFields['image'] = $request->file('image')->store('images', 'public');
-        }
+        } */
 
-        $project->update($formFields);
+        $project->update([
+            $formFields,
+            'image' => $fn
+        ]);
 
         return back()->with('message', 'Project Updated successfully!');
     }
@@ -90,6 +103,6 @@ class ProjectController extends Controller
     //Delete Project
     public function destroy(Project $project) {
         $project->delete();
-        return redirect('/')->with('message', 'Project deleted successfully');
+        return redirect('/projects')->with('message', 'Project deleted successfully');
     }
 }
