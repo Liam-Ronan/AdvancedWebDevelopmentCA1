@@ -27,4 +27,10 @@ class Project extends Model
                   ->orWhere('website', 'like', '%' . request('search') . '%');
         }
     }
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+        
+    }
 }

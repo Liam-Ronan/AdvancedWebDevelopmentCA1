@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -29,7 +30,7 @@ class ProjectController extends Controller
 
     //store project data
     public function store(Request $request) {
-        $formFields = $request->validate([
+        $request->validate([
             'title' => ['required', Rule::unique('projects', 'title')],
             'tags'=> 'required',
             'date_created' => 'required',
@@ -44,7 +45,15 @@ class ProjectController extends Controller
             $formFields['image'] = $request->file('image')->store('images', 'public');
         }
 
-        Project::create($formFields);
+        Project::create([
+            'uuid' => Str::uuid(),
+            'title' => $request->title,
+            'tags'=> $request->tags,
+            'date_created' => $request->date_created,
+            'website' => $request->website,
+            'email' => $request->email,
+            'description' => $request->description       
+        ]);
 
         return redirect('/')->with('message', 'Project uploaded successfully!');
     }
@@ -76,5 +85,7 @@ class ProjectController extends Controller
 
         return back()->with('message', 'Project Updated successfully!');
     }
+
+    
 
 }

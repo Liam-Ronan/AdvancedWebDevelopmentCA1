@@ -2,11 +2,11 @@
 
 <x-card>
     <div class="flex">
-        <img class="hidden w-48 mr-6 md:block" src="{{$project->image ? asset
+        <img class="w-48 mr-6 md:block" src="{{$project->image ? asset
         ('storage/' . $project->image) : asset('/images/no-image.png')}}" alt=""/>
         <div>
             <h3 class="text-2xl">
-                <a href="/projects/{{$project->id}}">{{$project->title}}</a>
+                <a href="/projects/{{$project->uuid}}">{{$project->title}}</a>
             </h3>
             <div class="text-xl font-bold mb-4">
                 <h4>This project was created on {{$project->date_created}}</h4>

@@ -1,5 +1,5 @@
 <x-layout>
-    <x-card class="p-10 rounded max-w-lg mx-auto mt-24">
+    <x-card class="p-10 rounded max-w-lg mx-auto mt-24 border-gray-500">
 
         <header class="text-center">
             <h2 class="text-2xl font-bold uppercase mb-3">
@@ -76,8 +76,8 @@
             </div>
 
             <div class="mb-6">
-                <button class="bg-black opacity-90 text-white rounded py-2 px-4 hover:bg-black">Add Project</button>
-                <a href="/" class="text-black ml-4"> Back </a>
+                <button class="bg-black opacity-90 text-white rounded py-2 px-4 hover:bg-gray-700">Add Project</button>
+                <a href="/" class="bg-black opacity-90 text-white rounded py-2 px-4 hover:bg-gray-700 ml-4"> Back </a>
             </div>
         </form>
     </x-card>
