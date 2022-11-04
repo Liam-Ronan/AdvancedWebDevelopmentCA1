@@ -41,8 +41,10 @@ Route::get('/projects/{project}/edit', [ProjectController::class, 'edit']);
 //Update Project data
 Route::put('/projects/{project}', [ProjectController::class, 'update']);
 
+//Delete Project 
+Route::delete('/projects/{project}', [ProjectController::class, 'destroy']);
+
 //Single project
 Route::get('/projects/{project}', [ProjectController::class, 'show']);
 
-
-/* Common resource routes */
+//show register create form

@@ -86,6 +86,10 @@ class ProjectController extends Controller
         return back()->with('message', 'Project Updated successfully!');
     }
 
-    
 
+    //Delete Project
+    public function destroy(Project $project) {
+        $project->delete();
+        return redirect('/')->with('message', 'Project deleted successfully');
+    }
 }

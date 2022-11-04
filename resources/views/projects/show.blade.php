@@ -33,17 +33,17 @@
                             <a href="{{$project->website}}" target="_blank" class="block bg-black text-white mt-6 py-4 px-4 rounded-xl hover:opacity-80">
                                 <i class="fa-solid fa-globe"></i> Visit Project Website</a>
 
-                            <a href="/projects/{{$project->id}}/edit" class="block bg-black text-white mt-6 py-4 px-4 rounded-xl hover:opacity-80">
-                                <i class="fa-solid fa-pencil p-1"></i>Update</a>
-                        </div>
+                        <a href="/projects/{{$project->id}}/edit" class="block bg-black text-white mt-6 py-4 rounded-xl hover:opacity-80">
+                            <i class="fa-solid fa-pencil p-1"></i>Update</a>
+
+                        <form method="POST" action="/projects/{{$project->id}}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="inline bg-black mt-6 py-4 rounded-xl hover:opacity-80 text-red-500"><i class="fa-solid fa-trash"></i>Delete</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </x-card>
-
-    {{--     <x-card class="mt-4 p-4 flex space-x-8">
-            <a href="/projects/{{$project->id}}/update" >
-                <i class="fa-solid fa-pencil p-2"></i>Update</a>
-        </x-card> --}}
     </div>
 </x-layout>
