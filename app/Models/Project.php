@@ -33,10 +33,4 @@ class Project extends Model
         }
     }
 
-    /* Returning uuid */
-    public function getRouteKeyName()
-    {
-        return 'uuid';
-        
-    }
 }

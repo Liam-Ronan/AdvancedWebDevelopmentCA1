@@ -47,4 +47,3 @@ Route::delete('/projects/{project}', [ProjectController::class, 'destroy']);
 //Single project
 Route::get('/projects/{project}', [ProjectController::class, 'show']);
 
-//show register create form

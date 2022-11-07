@@ -12,6 +12,7 @@ class ProjectController extends Controller
     //show all projects
     public function index() {
         return view('projects.index', [
+            /* Showing a total of 6 projects */
             'projects' => Project::latest()->filter(request(['tag', 'search']))->paginate(6)
         ]);
     }
@@ -30,7 +31,7 @@ class ProjectController extends Controller
 
     //store project data
     public function store(Request $request) {
-        $request->validate([
+        $formFields = $request->validate([
             'title' => ['required', Rule::unique('projects', 'title')],
             'tags'=> 'required',
             'date_created' => 'required',
@@ -46,15 +47,7 @@ class ProjectController extends Controller
             $formFields['image'] = $request->file('image')->store('images', 'public');
         }
 
-        Project::create([
-            'uuid' => Str::uuid(),
-            'title' => $request->title,
-            'tags'=> $request->tags,
-            'date_created' => $request->date_created,
-            'website' => $request->website,
-            'email' => $request->email,
-            'description' => $request->description       
-        ]);
+        Project::create($formFields);
 
         /* Redirect the user to index page with a message */
         return redirect('/projects')->with('message', 'Project uploaded successfully!');

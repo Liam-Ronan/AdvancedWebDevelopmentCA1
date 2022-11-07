@@ -18,11 +18,10 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(5)->create();
 
-        //Populating the database with 6 entries
+        //Populating the database with 5 entries
 
         //Common console command used throughout the project -> php artisan migrate:refresh --seed
-        Project::factory(12)->create([
-            'uuid' => Str::uuid()
-        ]);
+        //Creating the uuid
+        Project::factory(12)->create();
     }
 }

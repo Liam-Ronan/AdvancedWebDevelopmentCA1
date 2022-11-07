@@ -29,10 +29,10 @@
                         <a href=" {{$project->website}}" target="_blank" class="block bg-black text-white mt-6 py-2 rounded-xl hover:opacity-80">
                             <i class="fa-solid fa-globe"></i> Visit Project Website</a>
 
-                        <a href="/projects/{{$project->uuid}}/edit" class="block bg-black text-white mt-6 py-2 rounded-xl hover:opacity-80">
+                        <a href="/projects/{{$project->id}}/edit" class="block bg-black text-white mt-6 py-2 rounded-xl hover:opacity-80">
                             <i class="fa-solid fa-pencil p-1"></i>Update</a>
 
-                        <form method="POST" class="block bg-laravel text-white mt-6 py-2 rounded-xl hover:opacity-80" action="/projects/{{$project->uuid}}">
+                        <form method="POST" class="block bg-laravel text-white mt-6 py-2 rounded-xl hover:opacity-80" action="/projects/{{$project->id}}">
                             {{-- Using csrf to prevent Cross-site request forgeries --}}
                             @csrf
                             {{-- Delete methods --}}
