@@ -17,7 +17,9 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(5)->create();
 
+        //Populating the database with 6 entries
+
+        //Common console command used throughout the project -> php artisan migrate:refresh --seed
         Project::factory(6)->create();
     }
-    /* hello */
 }

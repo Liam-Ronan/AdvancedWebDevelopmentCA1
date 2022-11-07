@@ -30,6 +30,7 @@ class ProjectController extends Controller
     //store project data
     public function store(Request $request) {
         $formFields = $request->validate([
+            /* Using built-in validation */
             'title' => ['required', Rule::unique('projects', 'title')],
             'tags'=> 'required',
             'date_created' => 'required',
@@ -41,11 +42,13 @@ class ProjectController extends Controller
 
         /* File Upload */
         if($request->hasFile('image')) {
+            /* Saving file in public/images */
             $formFields['image'] = $request->file('image')->store('images', 'public');
         }
 
         Project::create($formFields);
 
+        /* Redirect the user to index page with a message */
         return redirect('/')->with('message', 'Project uploaded successfully!');
     }
 

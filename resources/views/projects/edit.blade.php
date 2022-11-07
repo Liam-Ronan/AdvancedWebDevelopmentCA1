@@ -63,7 +63,7 @@
                 <input  type="file"  class="border border-gray-200 rounded p-2 w-full"  name="image"/>
 
                 <img class="h-48 mr-6 mb-6" src="{{$project->image ? asset
-                    ('storage/' . $project->image) : asset('/images/no-image.png')}}" alt=""/>
+                    ('storage/' . $project->image) : asset('/images/andras-vas-Bd7gNnWJBkU-unsplash.jpg')}}" alt=""/>
 
                 @error('image')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>

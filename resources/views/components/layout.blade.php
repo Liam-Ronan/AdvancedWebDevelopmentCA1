@@ -1,4 +1,4 @@
-{{-- Layout for most pages --}}
+{{-- The main layout for most pages, containing the nav bar and footer --}}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,8 +13,10 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
+        {{-- Linking alpine js and Tailwind --}}
         <script src="//unpkg.com/alpinejs" defer></script>
         <script src="https://cdn.tailwindcss.com"></script>
+        {{-- Creating a colour variable that may be used throughout the project --}}
         <script>
             tailwind.config = {
                 theme: {
@@ -50,6 +52,7 @@
             <a href="/projects/create" class="absolute center-1/3 center-5 bg-black text-white py-2 px-5"><i class="fa-solid fa-upload p-2"></i>Upload Project</a>
         </footer>
 
+        {{-- When user creates, updates or deletes a project, a message will be shown on the index page --}}
         <x-flash-message/>
     </body>
 </html>

@@ -10,13 +10,16 @@ class Project extends Model
     use HasFactory;
 
     /* Used boot function in AppServiceProvider */
-    //protected $fillable = ['title', 'email', 'description', 'website', 'date_created', 'tags'];
 
+    /* Using scopeFilter function for when user clicks a tag, it will find all corresponding projects.
+
+       Using scopeFilter for the search bar, using SQL LIKE query to match request with title, tags, description etc*/
     public function scopeFilter($query, array $filters) {
         if($filters['tag'] ?? false) {
             $query->where('tags', 'like', '%' . request('tag') . '%');
         }
 
+    /*  */
         if($filters['search'] ?? false) {
             $query->where('title', 'like', '%' . request('search') . '%')
 

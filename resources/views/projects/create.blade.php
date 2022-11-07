@@ -7,12 +7,16 @@
             </h2>
         </header>
 
+        {{-- Form for creating a new project --}}
         <form method="POST" action="/projects" enctype="multipart/form-data">
             @csrf
             <div class="mb-6">
                 <label for="title" class="inline-block text-lg mb-2">Project Title</label>
-                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="title" value="{{old('title')}}"/>
+                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="title" 
+                {{-- Keeping the form data when the form gets validated --}}
+                value="{{old('title')}}"/>
 
+                {{-- Showing the error when the validation finds an inaccuracy --}}
                 @error('title')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
