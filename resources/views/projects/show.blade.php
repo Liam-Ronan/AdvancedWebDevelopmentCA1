@@ -35,7 +35,7 @@
                         <form method="POST" class="block bg-laravel text-white mt-6 py-2 rounded-xl hover:opacity-80" action="/projects/{{$project->uuid}}">
                             {{-- Using csrf to prevent Cross-site request forgeries --}}
                             @csrf
-                            {{-- Delete method --}}
+                            {{-- Delete methods --}}
                             @method('DELETE')
                             <button ><i class="fa-solid fa-trash"></i> Delete</button>
                         </form>
