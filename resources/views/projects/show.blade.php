@@ -37,7 +37,7 @@
                             @csrf
                             {{-- Delete methods --}}
                             @method('DELETE')
-                            <button ><i class="fa-solid fa-trash"></i> Delete</button>
+                            <button><i class="fa-solid fa-trash"></i> Delete</button>
                         </form>
                     </div>
                 </div>

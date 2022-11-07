@@ -18,6 +18,7 @@
 
             </div>
 
+            {{-- Links are the pages for pagination --}}
             <div class="mt-6 p-4">
                 {{$projects->links()}}
             </div>

@@ -80,8 +80,8 @@
             </div>
 
             <div class="mb-6">
-                <button class="bg-black opacity-90 text-white rounded py-2 px-4 hover:bg-black">Add Project</button>
-                <a href="/projects" class="text-black ml-4"> Back </a>
+                <button class="bg-black text-white rounded py-2 px-4 hover:opacity-80">Add Project</button>
+                <a href="/projects" class="text-black ml-4 hover:underline"> Back </a>
             </div>
         </form>
     </x-card>
