@@ -1,5 +1,5 @@
 <x-layout>
-    <a href="/projects/{{$project->id}}" class="inline-block text-black ml-10 mb-12"><i class="fa-solid fa-arrow-left"></i> Back</a>
+    <a href="/projects/{{$project->id}}" class="inline-block bg-black text-white ml-4 mb-4 p-2 rounded-xl hover:opacity-80"><i class="fa-solid fa-arrow-left"></i> Back</a>
     <x-card class="p-10 rounded max-w-lg mx-auto mt-24">
         <header class="text-center">
             <h2 class="text-2xl font-bold uppercase mb-3">Update Project</h2>
@@ -81,7 +81,7 @@
             </div>
 
             <div class="mb-6">
-                <button class="bg-black opacity-90 text-white rounded py-2 px-4 hover:bg-black">Update Project</button>
+                <button class="bg-black text-white rounded py-2 px-4 hover:opacity-80">Update Project</button>
                 <a href="/" class="text-black ml-4"> Back </a>
             </div>
         </form>
