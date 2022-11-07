@@ -27,7 +27,16 @@ class Project extends Model
                   
                   ->orWhere('tags', 'like', '%' . request('search') . '%')
                   
+                  ->orWhere('date_created', 'like', '%' . request('search') . '%')
+
                   ->orWhere('website', 'like', '%' . request('search') . '%');
         }
+    }
+
+    /* Returning uuid */
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+        
     }
 }

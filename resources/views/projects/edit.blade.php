@@ -1,12 +1,12 @@
 <x-layout>
-    <a href="/projects/{{$project->id}}" class="inline-block bg-black text-white ml-4 mb-4 p-2 rounded-xl hover:opacity-80"><i class="fa-solid fa-arrow-left"></i> Back</a>
+    <a href="/projects/{{$project->uuid}}" class="inline-block bg-black text-white ml-4 mb-4 p-3 rounded-xl hover:opacity-80"><i class="fa-solid fa-arrow-left"></i> Back</a>
     <x-card class="p-10 rounded max-w-lg mx-auto mt-24">
         <header class="text-center">
             <h2 class="text-2xl font-bold uppercase mb-3">Update Project</h2>
             <p class="font-bold uppercase mb-4">Edit: {{$project->title}}</p>
         </header>
 
-        <form method="POST" action="/projects/{{$project->id}}" enctype="multipart/form-data">
+        <form method="POST" action="/projects/{{$project->uuid}}" enctype="multipart/form-data">
 
             @csrf
             @method('PUT')
@@ -82,7 +82,7 @@
 
             <div class="mb-6">
                 <button class="bg-black text-white rounded py-2 px-4 hover:opacity-80">Update Project</button>
-                <a href="/" class="text-black ml-4"> Back </a>
+                <a href="/projects" class="text-black ml-4"> Back </a>
             </div>
         </form>
     </x-card>

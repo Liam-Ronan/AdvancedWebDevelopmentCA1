@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Project;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +21,8 @@ class DatabaseSeeder extends Seeder
         //Populating the database with 6 entries
 
         //Common console command used throughout the project -> php artisan migrate:refresh --seed
-        Project::factory(6)->create();
+        Project::factory(12)->create([
+            'uuid' => Str::uuid()
+        ]);
     }
 }

@@ -81,7 +81,7 @@
 
             <div class="mb-6">
                 <button class="bg-black opacity-90 text-white rounded py-2 px-4 hover:bg-black">Add Project</button>
-                <a href="/" class="text-black ml-4"> Back </a>
+                <a href="/projects" class="text-black ml-4"> Back </a>
             </div>
         </form>
     </x-card>
