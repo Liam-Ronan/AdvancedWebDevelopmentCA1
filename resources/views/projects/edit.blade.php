@@ -1,6 +1,5 @@
 <x-layout>
-    
-    <a href="/projects/{{$project->uuid}}" class="bg-black opacity-90 text-white rounded py-2 px-4 hover:bg-gray-700 ml-4 mb-8"><i class="fa-solid fa-arrow-left"></i> Back </a>
+    <a href="/projects/{{$project->id}}" class="inline-block bg-black text-white ml-4 mb-4 p-3 rounded-xl hover:opacity-80"><i class="fa-solid fa-arrow-left"></i> Back</a>
     <x-card class="p-10 rounded max-w-lg mx-auto mt-24">
         <header class="text-center">
             <h2 class="text-2xl font-bold uppercase mb-3">Update Project</h2>
@@ -64,7 +63,7 @@
                 <input  type="file"  class="border border-gray-200 rounded p-2 w-full"  name="image"/>
 
                 <img class="h-48 mr-6 mb-6" src="{{$project->image ? asset
-                    ('storage/' . $project->image) : asset('/images/no-image.png')}}" alt=""/>
+                    ('storage/' . $project->image) : asset('/images/andras-vas-Bd7gNnWJBkU-unsplash.jpg')}}" alt=""/>
 
                 @error('image')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -82,8 +81,8 @@
             </div>
 
             <div class="mb-6">
-                <button class="bg-black opacity-90 text-white rounded py-2 px-4 hover:bg-gray-700">Update Project</button>
-                <a href="/projects/{{$project->uuid}}" class="bg-black opacity-90 text-white rounded py-2 px-4 hover:bg-gray-700 ml-4"> Back </a>
+                <button class="bg-black text-white rounded py-2 px-4 hover:opacity-80">Update Project</button>
+                <a href="/projects" class="text-black ml-4 hover:underline"> Back </a>
             </div>
         </form>
     </x-card>

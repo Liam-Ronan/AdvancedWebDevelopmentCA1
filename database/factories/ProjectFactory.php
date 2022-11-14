@@ -14,8 +14,11 @@ class ProjectFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
     public function definition()
     {
+
+        /* Using Faker to create fake data for each column */
         return [
             'title' => $this->faker->sentence(),
             'tags' => 'JavaScript, api, CSS',

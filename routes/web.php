@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
- Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 require __DIR__.'/auth.php'; 
 
 //All projects
-Route::get('/projects', [ProjectController::class, 'index']);
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 
 //show create Form
 Route::get('/projects/create', [ProjectController::class, 'create']);
@@ -47,4 +47,3 @@ Route::delete('/projects/{project}', [ProjectController::class, 'destroy']);
 //Single project
 Route::get('/projects/{project}', [ProjectController::class, 'show']);
 
-//show register create form

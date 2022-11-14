@@ -13,6 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
+        /* Creating the projects with the create function and listing the columns */
+
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid');

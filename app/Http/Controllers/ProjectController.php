@@ -12,6 +12,7 @@ class ProjectController extends Controller
     //show all projects
     public function index() {
         return view('projects.index', [
+            /* Showing a total of 6 projects */
             'projects' => Project::latest()->filter(request(['tag', 'search']))->paginate(6)
         ]);
     }
@@ -61,6 +62,7 @@ class ProjectController extends Controller
             'image' => $fn
         ]);
 
+        /* Redirect the user to index page with a message */
         return redirect('/projects')->with('message', 'Project uploaded successfully!');
     }
 
