@@ -6,7 +6,7 @@
             <p class="font-bold uppercase mb-4">Edit: {{$project->title}}</p>
         </header>
 
-        <form method="POST" action="/projects/{{$project->uuid}}" enctype="multipart/form-data">
+        <form method="POST" action="/projects/{{$project->id}}" enctype="multipart/form-data">
 
             @csrf
             @method('PUT')

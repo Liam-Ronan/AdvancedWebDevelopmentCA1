@@ -31,7 +31,7 @@ class ProjectController extends Controller
 
     //store project data
     public function store(Request $request) {
-        $request->validate([
+        $formFields = $request->validate([
             'title' => ['required', Rule::unique('projects', 'title')],
             'tags'=> 'required',
             'date_created' => 'required',
@@ -42,28 +42,13 @@ class ProjectController extends Controller
 
 
         /* File Upload */
-  /*       if($request->hasFile('image')) {
+        if($request->hasFile('image')) {
             $formFields['image'] = $request->file('image')->store('images', 'public');
         }
- */
 
-        $img = $request->file('image');
-        $fn = now()->timezone('Europe/Dublin')->format('Ymd_His') . $img->getClientOriginalName();
-        $img->move('img/', $fn);
-        
-        Project::create([
-            'uuid' => Str::uuid(),
-            'title' => $request->title,
-            'tags'=> $request->tags,
-            'date_created' => $request->date_created,
-            'website' => $request->website,
-            'email' => $request->email,
-            'description' => $request->description,
-            'image' => $fn
-        ]);
+        Project::create($formFields);
 
-        /* Redirect the user to index page with a message */
-        return redirect('/projects')->with('message', 'Project uploaded successfully!');
+        return redirect('/projects')->with('message', 'Project Created successfully');
     }
 
     //show edit form
@@ -73,33 +58,26 @@ class ProjectController extends Controller
 
 
      //Update project data
-     public function update(Request $request, Project $project) {
-        $img = $request->file('image');
-        $fn = now()->timezone('Europe/Dublin')->format('Ymd_His') . $img->getClientOriginalName();
-        $img->move('img/', $fn);
-
+    public function update(Request $request, Project $project) {
         $formFields = $request->validate([
             'title' => 'required',
             'tags'=> 'required',
             'date_created' => 'required',
             'website' => ['required', 'url'],
             'email' => ['required', 'email'],
-            'description' => 'required'
+            'description' => 'required'  
         ]);
 
 
         /* File Upload */
-/*         if($request->hasFile('image')) {
+        if($request->hasFile('image')) {
             $formFields['image'] = $request->file('image')->store('images', 'public');
-        } */
+        }
 
-        $project->update([
-            $formFields,
-            'image' => $fn
-        ]);
+        $project->update($formFields);
 
         return back()->with('message', 'Project Updated successfully!');
-    }
+}
 
 
     //Delete Project
