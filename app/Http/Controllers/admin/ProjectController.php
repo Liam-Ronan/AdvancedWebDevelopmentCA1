@@ -1,17 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers\admin;
 
+use app\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
 {
     //show all projects
     public function index() {
-        return view('projects.index', [
+
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        return view('admin.projects.index', [
             /* Showing a total of 6 projects */
             'projects' => Project::latest()->filter(request(['tag', 'search']))->paginate(6)
         ]);
@@ -26,11 +32,19 @@ class ProjectController extends Controller
 
     //show create form
     public function create() {
-        return view('projects.create');
+
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        return view('admin.projects.create');
     }
 
     //store project data
     public function store(Request $request) {
+
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
         $formFields = $request->validate([
             'title' => ['required', Rule::unique('projects', 'title')],
             'tags'=> 'required',
@@ -53,12 +67,20 @@ class ProjectController extends Controller
 
     //show edit form
     public function edit(Project $project) {
-        return view('projects.edit', ['project' => $project]);
+
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        return view('admin.projects.edit', ['project' => $project]);
     }
 
 
      //Update project data
     public function update(Request $request, Project $project) {
+
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
         $formFields = $request->validate([
             'title' => 'required',
             'tags'=> 'required',
@@ -82,6 +104,10 @@ class ProjectController extends Controller
 
     //Delete Project
     public function destroy(Project $project) {
+
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
         $project->delete();
         return redirect('/projects')->with('message', 'Project deleted successfully');
     }

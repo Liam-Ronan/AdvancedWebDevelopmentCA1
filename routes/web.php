@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
+use App\Http\Controllers\User\ProjectController as UserBookController;
 use illuminate\Http\Request;
 use App\Models\Project;
 use Illuminate\Support\Facades\Route;

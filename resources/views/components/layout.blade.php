@@ -13,7 +13,7 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
-        {{-- Linking alpine js and Tailwind CSS --}}
+        {{-- Linking alpine js for the flash message and Tailwind CSS --}}
         <script src="//unpkg.com/alpinejs" defer></script>
         <script src="https://cdn.tailwindcss.com"></script>
         {{-- Creating a colour variable that may be used throughout the project --}}
