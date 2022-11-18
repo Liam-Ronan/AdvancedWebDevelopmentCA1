@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
         $role_admin = Role::where('name', 'admin')->first();
 
         /* Get the user role from the role table. Later(line 42) attach this role to users */
-        $role_user = Role::where('name', 'admin')->first();
+        $role_user = Role::where('name', 'user')->first();
 
         $admin = new User();
         $admin->name = 'Liam Ronan';
@@ -33,11 +33,11 @@ class UserSeeder extends Seeder
         $admin->roles()->attach($role_admin);
 
         $user = new User();
-        $user->name = 'Jane Doe'; 
+        $user->name = 'Jane Doe';
         $user->email = 'janedoe@gmail.com';
-        $user->password = Hash::make('password'); 
+        $user->password = Hash::make('password');
         $user->save();
-        
+
         /* Attaching User role to this user */
         $user->roles()->attach($role_user);
     }

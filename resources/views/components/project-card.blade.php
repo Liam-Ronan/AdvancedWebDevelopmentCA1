@@ -9,7 +9,7 @@
         ('storage/' . $project->image) : asset('/images/andras-vas-Bd7gNnWJBkU-unsplash.jpg')}}" alt=""/>
         <div>
             <h3 class="text-2xl font-bold mb-3 mt-3">
-                <a href="/projects/{{$project->id}}">{{$project->title}}</a>
+                <a href="{{ route('admin.projects.show', $project)}}">{{$project->title}}</a>
             </h3>
             <div class="text-lg font-normal mb-3 mt-3">
                 {{-- Reformatting the date to d/m/y --}}

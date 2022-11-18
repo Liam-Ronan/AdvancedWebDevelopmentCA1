@@ -44,14 +44,14 @@ class User extends Authenticatable
 
     /* This function allows us to do $user->roles which will return all the roles for that user */
     public function roles() {
-        return $this->belongsToMany('app\Models\Role', 'user_role');
+        return $this->belongsToMany('App\Models\Role', 'user_role');
     }
 
     public function authorizeRoles($roles)
     {
         if(is_array($roles)){
             return $this->hasAnyRole($roles) ||
-            abort (401, 'This action is unauthorzed');
+            abort (401, 'This action is unauthorized');
         }
         return $this->hasRole($roles) ||
         abort(401, 'This action is unauthorized');

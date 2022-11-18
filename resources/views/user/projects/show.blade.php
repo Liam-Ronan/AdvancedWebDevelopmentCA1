@@ -6,9 +6,6 @@
     <a href="{{URL::previous()}}" class="inline-block bg-black text-white ml-4 mb-4 p-3 rounded-xl hover:opacity-80"><i class="fa-solid fa-arrow-left"></i> Back</a>
     <div class="mx-4">
 
-    {{-- May Need to Use for back button! --}}
-    {{-- {{ redirect()->getUrlGenerator()->previous() }} --}}
-
         <x-card class="p-10">
             <div class="flex flex-col items-center justify-center text-center">
                 <img class="h-96 mr-6 mb-6" src="{{$project->image ? asset
@@ -32,10 +29,10 @@
                         <a href=" {{$project->website}}" target="_blank" class="block bg-black text-white mt-6 py-2 rounded-xl hover:opacity-80">
                             <i class="fa-solid fa-globe"></i> Visit Project Website</a>
 
-                        <a href="{{ route('admin.projects.edit', $project) }}" class="block bg-black text-white mt-6 py-2 rounded-xl hover:opacity-80">
+                        <a href="/projects/{{$project->id}}/edit" class="block bg-black text-white mt-6 py-2 rounded-xl hover:opacity-80 {{ $user->hasRole('admin') ? '' : 'hidden'}}">
                             <i class="fa-solid fa-pencil p-1"></i>Update</a>
 
-                        <form method="POST" class="block bg-laravel text-white mt-6 py-2 rounded-xl hover:opacity-80" action="{{ route('admin.projects.destroy', $project) }}">
+                        <form method="POST" class="block bg-laravel text-white mt-6 py-2 rounded-xl hover:opacity-80 {{ $user->hasRole('admin') ? '' : 'hidden'}}" action="/projects/{{$project->id}}">
                             {{-- Using csrf to prevent Cross-site request forgeries --}}
                             @csrf
                             {{-- Delete methods --}}

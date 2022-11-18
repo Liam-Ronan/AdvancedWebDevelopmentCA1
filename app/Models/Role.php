@@ -10,7 +10,8 @@ class Role extends Model
     use HasFactory;
 
     /* This function allows us to do $role->users which will return all users for that role */
-    public function users() {
-        return $this->belongsToMany('app\Models\User', 'user_role');
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\User', 'user_role');
     }
 }

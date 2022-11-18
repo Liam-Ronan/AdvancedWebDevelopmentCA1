@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
-use App\Http\Controllers\User\ProjectController as UserBookController;
+use App\Http\Controllers\User\ProjectController as UserProjectController;
 use illuminate\Http\Request;
-use App\Models\Project;
+use app\Models\Project;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,16 +21,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
- Route::get('/dashboard', function () {
+Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-require __DIR__.'/auth.php'; 
+require __DIR__ . '/auth.php';
 
-//All projects
-Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+/* Admin routes */
+Route::resource('admin/projects', AdminProjectController::class)->middleware(['auth'])->names('admin.projects');
 
-//show create Form
+/* User routes*/
+Route::resource('user/projects', UserProjectController::class)->names('user.projects');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+
+
+
+/* //show create Form
 Route::get('/projects/create', [ProjectController::class, 'create']);
 
 //store project Data
@@ -46,5 +53,4 @@ Route::put('/projects/{project}', [ProjectController::class, 'update']);
 Route::delete('/projects/{project}', [ProjectController::class, 'destroy']);
 
 //Single project
-Route::get('/projects/{project}', [ProjectController::class, 'show']);
-
+Route::get('/projects/{project}', [ProjectController::class, 'show']); */

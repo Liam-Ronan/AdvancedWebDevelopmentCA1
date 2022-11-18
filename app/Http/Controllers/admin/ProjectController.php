@@ -2,7 +2,7 @@
 
 namespace app\Http\Controllers\admin;
 
-use app\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -12,7 +12,8 @@ use Illuminate\Validation\Rule;
 class ProjectController extends Controller
 {
     //show all projects
-    public function index() {
+    public function index()
+    {
 
         $user = Auth::user();
         $user->authorizeRoles('admin');
@@ -24,14 +25,14 @@ class ProjectController extends Controller
     }
 
     //show single project
-    public function show(Project $project) {
-        return view('projects.show', [
-            'project' => $project
-        ]);
+    public function show(Project $project)
+    {
+        return view('admin.projects.show')->with('project', $project);
     }
 
     //show create form
-    public function create() {
+    public function create()
+    {
 
         $user = Auth::user();
         $user->authorizeRoles('admin');
@@ -40,33 +41,35 @@ class ProjectController extends Controller
     }
 
     //store project data
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
         $formFields = $request->validate([
             'title' => ['required', Rule::unique('projects', 'title')],
-            'tags'=> 'required',
+            'tags' => 'required',
             'date_created' => 'required',
             'website' => ['required', 'url'],
             'email' => ['required', 'email'],
-            'description' => 'required'  
+            'description' => 'required'
         ]);
 
 
         /* File Upload */
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $formFields['image'] = $request->file('image')->store('images', 'public');
         }
 
         Project::create($formFields);
 
-        return redirect('/projects')->with('message', 'Project Created successfully');
+        return to_route('admin.projects.index')->with('message', 'Project Created successfully');
     }
 
     //show edit form
-    public function edit(Project $project) {
+    public function edit(Project $project)
+    {
 
         $user = Auth::user();
         $user->authorizeRoles('admin');
@@ -75,40 +78,42 @@ class ProjectController extends Controller
     }
 
 
-     //Update project data
-    public function update(Request $request, Project $project) {
+    //Update project data
+    public function update(Request $request, Project $project)
+    {
 
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
         $formFields = $request->validate([
             'title' => 'required',
-            'tags'=> 'required',
+            'tags' => 'required',
             'date_created' => 'required',
             'website' => ['required', 'url'],
             'email' => ['required', 'email'],
-            'description' => 'required'  
+            'description' => 'required'
         ]);
 
 
         /* File Upload */
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $formFields['image'] = $request->file('image')->store('images', 'public');
         }
 
         $project->update($formFields);
 
         return back()->with('message', 'Project Updated successfully!');
-}
+    }
 
 
     //Delete Project
-    public function destroy(Project $project) {
+    public function destroy(Project $project)
+    {
 
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
         $project->delete();
-        return redirect('/projects')->with('message', 'Project deleted successfully');
+        return to_route('admin.projects.index')->with('message', 'Project deleted successfully');
     }
 }

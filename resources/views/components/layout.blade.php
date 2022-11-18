@@ -32,13 +32,13 @@
     </head>
     <body class="mb-48">
             <nav class="flex justify-between items-center mb-6 p-4 bg-black">
-                <a href="/projects"><img class="w-24" src="{{asset('images/ales-nesetril-Im7lZjxeLhg-unsplash.jpg')}}" alt="" class="logo"/></a>
+                <a href="{{ route('home.index') }}"><img class="w-24" src="{{asset('images/ales-nesetril-Im7lZjxeLhg-unsplash.jpg')}}" alt="" class="logo"/></a>
                 <ul class="flex space-x-4 mr-4 text-lg">
                     <li>
                         <a href="/" class="hover:opacity-50 text-white"><i class="fa-solid fa-arrow-right-to-bracket p-2"></i>Log Out</a>
                     </li>
                     <li>
-                        <a href="/projects/create" class="hover:opacity-50 text-white"><i class="fa-solid fa-upload p-2"></i>Upload Project</a>
+                        <a href="{{ route('admin.projects.create') }}" class="hover:opacity-50 text-white"><i class="fa-solid fa-upload p-2"></i>Upload Project</a>
                     </li>
                 </ul>
             </nav>
@@ -46,7 +46,7 @@
             {{$slot}}
         </main>
         <footer class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-black text-white h-24 mt-24 md:justify-center">
-            <a href="/projects/create" class="absolute center-1/3 center-5 text-white py-2 px-5 hover:opacity-50"><i class="fa-solid fa-upload p-2"></i>Upload Project</a>
+            <a href="{{ route('admin.projects.create') }}" class="absolute center-1/3 center-5 text-white py-2 px-5 hover:opacity-50"><i class="fa-solid fa-upload p-2"></i>Upload Project</a>
         </footer>
 
         {{-- When user creates, updates or deletes a project, a message will be shown on the index page --}}

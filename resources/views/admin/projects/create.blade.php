@@ -8,7 +8,7 @@
         </header>
 
         {{-- Form for creating a new project --}}
-        <form method="POST" action="/projects" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.projects.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="mb-6">
                 <label for="title" class="inline-block text-lg mb-2">Project Title</label>
@@ -81,7 +81,7 @@
 
             <div class="mb-6">
                 <button class="bg-black text-white rounded py-2 px-4 hover:opacity-80">Add Project</button>
-                <a href="/projects" class="text-black ml-4 hover:underline"> Back </a>
+                <a href="{{URL::previous()}}" class="text-black ml-4 hover:underline"> Back </a>
             </div>
         </form>
     </x-card>

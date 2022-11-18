@@ -1,12 +1,12 @@
 <x-layout>
-    <a href="/projects/{{$project->id}}" class="inline-block bg-black text-white ml-4 mb-4 p-3 rounded-xl hover:opacity-80"><i class="fa-solid fa-arrow-left"></i> Back</a>
+    <a href="{{URL::previous()}}" class="inline-block bg-black text-white ml-4 mb-4 p-3 rounded-xl hover:opacity-80"><i class="fa-solid fa-arrow-left"></i> Back</a>
     <x-card class="p-10 rounded max-w-lg mx-auto mt-24">
         <header class="text-center">
             <h2 class="text-2xl font-bold uppercase mb-3">Update Project</h2>
             <p class="font-bold uppercase mb-4">Edit: {{$project->title}}</p>
         </header>
 
-        <form method="POST" action="/projects/{{$project->id}}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.projects.update', $project)}}" enctype="multipart/form-data">
 
             @csrf
             @method('PUT')
