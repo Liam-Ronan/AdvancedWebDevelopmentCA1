@@ -33,4 +33,8 @@ class Project extends Model
         }
     }
 
+    public function creator() {
+        return $this->belongsTo(Creator::class);
+    }
+
 }
