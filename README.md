@@ -1,8 +1,12 @@
-<h1>Advanced Web Development CA1</h1>
+<h1 align="center">Advanced Web Development CA1</h1>
   
 <a href="https://www.youtube.com/watch?v=SwKMFZcqjUg" title="Website demo and explanation">
     <img src="https://user-images.githubusercontent.com/99216210/202867336-64b672d9-b912-4839-81ec-6ea15696ee81.jpg" style="max-width: 100%;"
-</a>  
+</a>
+
+<p align="center">Website built using the Laravel framework alongside Tailwind CSS and utilising the MVC architecture. CRUD functionality is present within the
+website alongside searching, using tags to search, pagination, flash messages etc. Using mySQL as the RDBMS.
+</p>
  
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
