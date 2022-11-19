@@ -5,7 +5,7 @@
 </a>
 
 <hr>
-
+<h2>About Project</h2>
 <p>Website built using the Laravel framework alongside Tailwind CSS and utilising the MVC architecture. CRUD functionality is present within the
 website alongside searching, using tags to search, pagination, flash messages etc. Using mySQL as the RDBMS.
 </p>
