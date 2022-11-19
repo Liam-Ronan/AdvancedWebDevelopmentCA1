@@ -1,7 +1,7 @@
 <h1>Advanced Web Development CA1</h1>
   
 <a href="https://www.youtube.com/watch?v=SwKMFZcqjUg" title="Website demo and explanation">
-    <img src="![ytytyt]https://user-images.githubusercontent.com/99216210/202866950-c34b7bd8-3e64-4448-9ddb-60b32eaef6ac.PNG" style="max-width: 100%;"
+    <img src="https://user-images.githubusercontent.com/99216210/202866950-c34b7bd8-3e64-4448-9ddb-60b32eaef6ac.PNG" style="max-width: 100%;"
 </a>  
  
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
