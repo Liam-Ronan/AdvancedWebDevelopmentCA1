@@ -28,7 +28,7 @@ return new class extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
             $table->dropForeign(['creator_id']);
-            $table->dropColumn(['creator_id']);
+            $table->dropColumn('creator_id');
         });
     }
 };

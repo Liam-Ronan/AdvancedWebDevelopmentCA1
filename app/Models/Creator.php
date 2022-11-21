@@ -2,15 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Project;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Creator extends Model
 {
     use HasFactory;
 
-    /* Returns the creator's projects */
-    //Eg: $creator->projects
     public function projects() {
         return $this->hasMany(Project::class);
     }
