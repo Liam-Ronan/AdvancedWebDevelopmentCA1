@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Project extends Model
 {
     use HasFactory;
-    protected $gaurded = [];
+    protected $guarded = [];
 
     /* Used boot function in AppServiceProvider */
 

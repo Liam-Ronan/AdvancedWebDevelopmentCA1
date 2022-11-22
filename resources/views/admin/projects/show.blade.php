@@ -17,6 +17,10 @@
                 <h3 class="text-3xl font-bold mb-3 mt-3">{{$project->title}}</h3>
                 <div class="text-xl font-normal mb-3 mt-3"><h3>Project Uploaded:</h3>{{$project->date_created}}</div>
 
+                <div class="text-xl font-normal mb-3 mt-3"><h3>Creator: </h3>{{$project->creator->name}}</div>
+
+                <div class="text-xl font-normal mb-3 mt-3"><h3>Creator Address: </h3>{{$project->creator->address}}</div>
+
                 <x-project-tags :tagsCsv="$project->tags"/>
 
                 <div>

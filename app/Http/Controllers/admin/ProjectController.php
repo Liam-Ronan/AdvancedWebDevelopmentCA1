@@ -18,10 +18,14 @@ class ProjectController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-        return view('admin.projects.index', [
-            /* Showing a total of 6 projects */
-            'projects' => Project::latest()->filter(request(['tag', 'search']))->paginate(6)
-        ]);
+        $projects = Project::with('creator')->latest()->filter(request(['tag', 'search']))->paginate(6);
+
+        return view('admin.projects.index')->with('projects', $projects);
+
+        /* return view('admin.projects.index', [ */
+        /* Showing a total of 6 projects */
+        /*       'projects' => Project::latest()->filter(request(['tag', 'search']))->paginate(6)
+        ]); */
     }
 
     //show single project
