@@ -35,10 +35,13 @@
                 <a href="{{ route('home.index') }}"><img class="w-24" src="{{asset('images/ales-nesetril-Im7lZjxeLhg-unsplash.jpg')}}" alt="" class="logo"/></a>
                 <ul class="flex space-x-4 mr-4 text-lg">
                     <li>
-                        <a href="/" class="hover:opacity-50 text-white"><i class="fa-solid fa-arrow-right-to-bracket p-2"></i>Log Out</a>
+                        <a href="{{ route('admin.projects.create') }}" class="hover:opacity-50 text-white"><i class="fa-solid fa-upload p-2"></i>Upload Project</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.projects.create') }}" class="hover:opacity-50 text-white"><i class="fa-solid fa-upload p-2"></i>Upload Project</a>
+                        <a href="{{ route('home.creator.index')}}" class="hover:opacity-50 text-white"><i class="fa-sharp fa-solid fa-users p-2"></i>Creators</a>
+                    </li>
+                    <li>
+                        <a href="/" class="hover:opacity-50 text-white"><i class="fa-solid fa-arrow-right-to-bracket p-2"></i>Log Out</a>
                     </li>
                 </ul>
             </nav>

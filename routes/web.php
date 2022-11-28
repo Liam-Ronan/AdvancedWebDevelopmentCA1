@@ -35,6 +35,9 @@ Route::resource('user/projects', UserProjectController::class)->names('user.proj
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 
+Route::get('/home/creators', [App\Http\Controllers\HomeController::class, 'creatorIndex'])->name('home.creator.index');
+
+
 
 
 /* //show create Form
