@@ -26,7 +26,7 @@ class HomeController extends Controller
         if($user->hasRole('admin')) {
             $home = 'admin.projects.index';
         }
-        else if($user->hasRole('user')) {
+        else {
             $home = 'user.projects.index';
         }
 
