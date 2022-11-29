@@ -16,7 +16,13 @@ class CreatorController extends Controller
      */
     public function index()
     {
+
         $user = Auth::user();
+
+        if ($user->hasRole('user')) {
+            return view('user.creators.index');
+        }
+
         $user->authorizeRoles('admin');
 
         $creators = Creator::all();

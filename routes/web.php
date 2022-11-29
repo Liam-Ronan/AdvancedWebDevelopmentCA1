@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
-use App\Http\Controllers\User\ProjectController as UserProjectController;
-use illuminate\Http\Request;
 use app\Models\Project;
+use illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\CreatorController;
+use App\Http\Controllers\User\ProjectController as UserProjectController;
+use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,12 +31,14 @@ require __DIR__ . '/auth.php';
 /* Admin routes */
 Route::resource('admin/projects', AdminProjectController::class)->middleware(['auth'])->names('admin.projects');
 
+Route::resource('admin/creators', CreatorController::class)->middleware(['auth'])->names('admin.creators');
+
 /* User routes*/
 Route::resource('user/projects', UserProjectController::class)->names('user.projects');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 
-Route::get('/home/creators', [App\Http\Controllers\HomeController::class, 'creatorIndex'])->name('home.creator.index');
+/* Route::get('/home/creators', [App\Http\Controllers\HomeController::class, 'creatorIndex'])->name('home.creator.index'); */
 
 
 

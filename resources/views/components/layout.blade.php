@@ -38,7 +38,7 @@
                         <a href="{{ route('admin.projects.create') }}" class="hover:opacity-50 text-white"><i class="fa-solid fa-upload p-2"></i>Upload Project</a>
                     </li>
                     <li>
-                        <a href="{{ route('home.creator.index')}}" class="hover:opacity-50 text-white"><i class="fa-sharp fa-solid fa-users p-2"></i>Creators</a>
+                        <a href="{{ route('admin.creators.index')}}" class="hover:opacity-50 text-white"><i class="fa-sharp fa-solid fa-users p-2"></i>Creators</a>
                     </li>
                     <li>
                         <a href="/" class="hover:opacity-50 text-white"><i class="fa-solid fa-arrow-right-to-bracket p-2"></i>Log Out</a>
