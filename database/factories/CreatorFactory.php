@@ -19,6 +19,9 @@ class CreatorFactory extends Factory
         return [
             'name' => $this->faker->name,
             'address' => $this->faker->address,
+            'bio' => $this->faker->paragraph(5),
+            'portfolio' => $this->faker->url(),
+            'email' => $this->faker->email(),
         ];
     }
 }

@@ -80,9 +80,25 @@
                 @enderror
             </div>
 
+            <div class="form-group mb-6">
+                <label for="creator"  class="inline-block text-lg mb-2">Creator:</label>
+                <select name="creator_id">
+                    @foreach ($creators as $creator)
+                        <option value="{{$creator->id}}"
+                             {{(old('creator_id') == $creator->id) ? "selected" : ""}}>
+                            {{$creator->name}}
+                        </option>
+                    @endforeach
+                
+                    @error('creator')
+                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                    @enderror
+                </select>
+            </div>
+
             <div class="mb-6">
                 <button class="bg-black text-white rounded py-2 px-4 hover:opacity-80">Update Project</button>
-                <a href="/projects" class="text-black ml-4 hover:underline"> Back </a>
+                <a href="/home" class="text-black ml-4 hover:underline"> Back </a>
             </div>
         </form>
     </x-card>

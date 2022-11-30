@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
+            $table->string('image')->nullable();
+            $table->longText('bio');
+            $table->string('portfolio');
+            $table->string('email');
             $table->timestamps();
         });
     }

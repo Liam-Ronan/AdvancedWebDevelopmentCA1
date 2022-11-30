@@ -16,8 +16,8 @@ class CreatorSeeder extends Seeder
     public function run()
     {
         Creator::factory()
-        ->times(3)
-        ->hasProjects(4)
-        ->create();
+            ->times(6)
+            ->hasProjects(5)
+            ->create();
     }
 }

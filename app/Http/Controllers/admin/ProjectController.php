@@ -3,6 +3,7 @@
 namespace app\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Creator;
 use App\Models\Project;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -37,11 +38,11 @@ class ProjectController extends Controller
     //show create form
     public function create()
     {
-
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-        return view('admin.projects.create');
+        $creators = Creator::all();
+        return view('admin.projects.create')->with('creators', $creators);
     }
 
     //store project data
@@ -57,7 +58,8 @@ class ProjectController extends Controller
             'date_created' => 'required',
             'website' => ['required', 'url'],
             'email' => ['required', 'email'],
-            'description' => 'required'
+            'description' => 'required',
+            'creator_id' => 'required'
         ]);
 
 
@@ -78,7 +80,9 @@ class ProjectController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-        return view('admin.projects.edit', ['project' => $project]);
+        $creators = Creator::all();
+
+        return view('admin.projects.edit', ['project' => $project])->with('creators', $creators);
     }
 
 
@@ -95,7 +99,8 @@ class ProjectController extends Controller
             'date_created' => 'required',
             'website' => ['required', 'url'],
             'email' => ['required', 'email'],
-            'description' => 'required'
+            'description' => 'required',
+            'creator_id' => 'required'
         ]);
 
 
@@ -106,7 +111,7 @@ class ProjectController extends Controller
 
         $project->update($formFields);
 
-        return back()->with('message', 'Project Updated successfully!');
+        return to_route('admin.projects.index')->with('message', 'Project Updated successfully!');
     }
 
 

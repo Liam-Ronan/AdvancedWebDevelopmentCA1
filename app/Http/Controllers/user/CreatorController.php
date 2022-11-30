@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\user;
 
-use App\Http\Controllers\Controller;
+use App\Models\Creator;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CreatorController extends Controller
 {
@@ -14,7 +16,17 @@ class CreatorController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+
+        if ($user->hasRole('user')) {
+            return view('user.creators.index');
+        }
+
+        $user->authorizeRoles('user');
+
+        $creators = Creator::all();
+
+        return view('user.creators.index')->with('creators', $creators);
     }
 
     /**
@@ -27,5 +39,4 @@ class CreatorController extends Controller
     {
         //
     }
-
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\Creator;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,7 +38,11 @@ class CreatorController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        $creators = Creator::all();
+        return view('admin.creators.create')->with('creators', $creators);
     }
 
     /**
@@ -48,7 +53,26 @@ class CreatorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        $formFields = $request->validate([
+            'name' => ['required', Rule::unique('creators', 'name')],
+            'address' => 'required',
+            'bio' => 'required',
+            'portfolio' => ['required', 'url'],
+            'email' => ['required', 'email'],
+        ]);
+
+
+        /* File Upload */
+        if ($request->hasFile('image')) {
+            $formFields['image'] = $request->file('image')->store('images', 'public');
+        }
+
+        Creator::create($formFields);
+
+        return to_route('admin.creators.index')->with('message', 'Creator Added successfully');
     }
 
     /**
@@ -57,9 +81,16 @@ class CreatorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Creator $creator)
     {
-        //
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        if(!Auth::id()) {
+            return abort(403);
+        }
+
+        return view('admin.creators.show')->with('creator', $creator);
     }
 
     /**
@@ -68,9 +99,12 @@ class CreatorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Creator $creator)
     {
-        //
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        return view('admin.creators.edit', ['creator' => $creator]);
     }
 
     /**
@@ -80,9 +114,28 @@ class CreatorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Creator $creator)
     {
-        //
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        $formFields = $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'bio' => 'required',
+            'portfolio' => ['required', 'url'],
+            'email' => ['required', 'email'],
+        ]);
+
+
+        /* File Upload */
+        if ($request->hasFile('image')) {
+            $formFields['image'] = $request->file('image')->store('images', 'public');
+        }
+
+        $creator->update($formFields);
+
+        return to_route('admin.creators.index')->with('message', 'Creator Updated successfully!');
     }
 
     /**
@@ -91,8 +144,12 @@ class CreatorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Creator $creator)
     {
-        //
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        $creator->delete();
+        return to_route('admin.creators.index')->with('message', 'Creator deleted successfully');
     }
 }

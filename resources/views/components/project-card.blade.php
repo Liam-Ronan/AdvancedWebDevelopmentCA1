@@ -24,7 +24,7 @@
             </div>
 
             <div class="text-lg font-normal mb-3 mt-3">
-                <h5>Creator: {{$project->creator->name}}</h5>
+                <h5>Creator: <strong>{{$project->creator->name}}</strong></h5>
             </div>
         </div>
     </div>

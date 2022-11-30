@@ -15,6 +15,9 @@
             @else
                 <p>No creators found</p>
             @endunless
-
+        </div>
+        <div class="lg:grid lg:grid-cols-8 ml-2 mt-5 text-center">
+            <a href="{{ route('admin.creators.create') }}" class="bg-black text-white rounded-xl hover:opacity-80 p-5">
+                <i class="fa-solid fa-pencil p-1"></i>Add A Creator</a>
         </div>
 </x-layout>
