@@ -83,6 +83,7 @@
             <div class="form-group mb-6">
                 <label for="creator"  class="inline-block text-lg mb-2">Creator:</label>
                 <select name="creator_id">
+                    <option value="{{old('creator_id')}}">{{$project->creator->name}}</option>
                     @foreach ($creators as $creator)
                         <option value="{{$creator->id}}"
                              {{(old('creator_id') == $creator->id) ? "selected" : ""}}>
