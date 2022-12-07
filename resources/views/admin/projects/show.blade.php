@@ -21,6 +21,15 @@
 
                 <div class="text-xl font-normal mb-3 mt-3"><h3>Creator Address: </h3>{{$project->creator->address}}</div>
 
+                
+                <div class="text-xl font-normal mb-3 mt-3"><h3>Developers: <h3></div>  
+                @foreach ($project->developers as $developer)
+                <h3>
+                    {{$developer->name}}
+                </h3>                                              
+                @endforeach
+                
+
                 <x-project-tags :tagsCsv="$project->tags"/>
 
                 <div>

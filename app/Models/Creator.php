@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Creator extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 
-    public function projects() {
+    public function projects()
+    {
         return $this->hasMany(Project::class);
     }
-
 }

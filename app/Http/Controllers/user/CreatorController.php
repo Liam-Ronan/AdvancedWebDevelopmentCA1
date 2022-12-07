@@ -17,11 +17,6 @@ class CreatorController extends Controller
     public function index()
     {
         $user = Auth::user();
-
-        if ($user->hasRole('user')) {
-            return view('user.creators.index');
-        }
-
         $user->authorizeRoles('user');
 
         $creators = Creator::all();
@@ -35,8 +30,15 @@ class CreatorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Creator $creator)
     {
-        //
+        $user = Auth::user();
+        $user->authorizeRoles('user');
+
+        if (!Auth::id()) {
+            return abort(403);
+        }
+
+        return view('user.creators.show')->with('creator', $creator);
     }
 }

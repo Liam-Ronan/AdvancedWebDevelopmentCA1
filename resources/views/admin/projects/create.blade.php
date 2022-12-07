@@ -96,6 +96,14 @@
                 </select>
             </div>
 
+            <div class="form-group mb-6">
+                <label for="devlopers"> <strong> Developers: </strong> <br> </label>
+                @foreach($developers as $developer)
+                    <input type="checkbox", value="{{$developer->id}}" name="developers[]">
+                    {{$developer->name}}
+                @endforeach
+            </div>
+
             <div class="mb-6">
                 <button class="bg-black text-white rounded py-2 px-4 hover:opacity-80">Add Project</button>
                 <a href="{{URL::previous()}}" class="text-black ml-4 hover:underline"> Back </a>

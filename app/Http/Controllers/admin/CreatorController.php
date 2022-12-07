@@ -86,7 +86,7 @@ class CreatorController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-        if(!Auth::id()) {
+        if (!Auth::id()) {
             return abort(403);
         }
 

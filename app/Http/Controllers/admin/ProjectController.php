@@ -4,6 +4,7 @@ namespace app\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Creator;
+use App\Models\Developer;
 use App\Models\Project;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class ProjectController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-        $projects = Project::with('creator')->latest()->filter(request(['tag', 'search']))->paginate(6);
+        $projects = Project::with('creator')->with('developers')->latest()->filter(request(['tag', 'search']))->paginate(6);
 
         return view('admin.projects.index')->with('projects', $projects);
 
@@ -42,7 +43,8 @@ class ProjectController extends Controller
         $user->authorizeRoles('admin');
 
         $creators = Creator::all();
-        return view('admin.projects.create')->with('creators', $creators);
+        $developers = Developer::all();
+        return view('admin.projects.create')->with('creators', $creators)->with('developers', $developers);
     }
 
     //store project data
@@ -59,7 +61,8 @@ class ProjectController extends Controller
             'website' => ['required', 'url'],
             'email' => ['required', 'email'],
             'description' => 'required',
-            'creator_id' => 'required'
+            'creator_id' => 'required',
+            'developers' => ['required', 'exists:developers,id']
         ]);
 
 
@@ -68,7 +71,9 @@ class ProjectController extends Controller
             $formFields['image'] = $request->file('image')->store('images', 'public');
         }
 
-        Project::create($formFields);
+        $formFields = Project::create();
+
+        $formFields->developers()->attach($request->developers);
 
         return to_route('admin.projects.index')->with('message', 'Project Created successfully');
     }
