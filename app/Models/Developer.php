@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Developer extends Model
 {
     use HasFactory;
-    protected $guarded = [];
 
     public function projects()
     {
-        return $this->belongsToMany(Project::class)->withTimestamps();
+        return $this->belongstoMany(Project::class)->withTimestamps();
     }
 }

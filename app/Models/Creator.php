@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Creator extends Model
 {
     use HasFactory;
-    protected $guarded = [];
 
     public function projects()
     {

@@ -40,7 +40,7 @@ class Project extends Model
     }
 
     public function developers() {
-        return $this->belongsToMany(Developer::class)->withTimestamps();
+        return $this->belongstoMany(Developer::class)->withTimestamps();
     }
 
 

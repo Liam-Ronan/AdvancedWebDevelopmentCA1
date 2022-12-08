@@ -20,7 +20,8 @@ class DeveloperSeeder extends Seeder
         ->times(3)
         ->create();
 
-        foreach(Project::all() as $project) {
+        foreach(Project::all() as $project) 
+        {
             $developers = Developer::inRandomOrder()->take(rand(1,3))->pluck('id');
             $project->developers()->attach($developers);
         }

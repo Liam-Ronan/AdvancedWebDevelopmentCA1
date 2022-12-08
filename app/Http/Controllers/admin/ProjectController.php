@@ -116,8 +116,8 @@ class ProjectController extends Controller
             'website' => ['required', 'url'],
             'email' => ['required', 'email'],
             'description' => 'required',
-            'creator_id' => 'required',
-            'developer_id' => 'required'
+            'creator_id' => 'required'
+            /* 'developer_id' => 'required' */
         ]);
 
 
