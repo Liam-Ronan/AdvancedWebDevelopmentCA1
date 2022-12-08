@@ -97,6 +97,22 @@
                 </select>
             </div>
 
+            <div class="form-group mb-6">
+                <label for="developer"  class="inline-block text-lg mb-2">Developer:</label>
+                <select name="developer_id">
+                    @foreach ($developers as $developer)
+                        <option value="{{$developer->id}}"
+                             {{(old('developer_id') == $developer->id) ? "selected" : ""}}>
+                            {{$developer->name}}
+                        </option>
+                    @endforeach
+                
+                    @error('creator')
+                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                    @enderror
+                </select>
+            </div>
+
             <div class="mb-6">
                 <button class="bg-black text-white rounded py-2 px-4 hover:opacity-80">Update Project</button>
                 <a href="/home" class="text-black ml-4 hover:underline"> Back </a>

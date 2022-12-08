@@ -54,7 +54,7 @@ class ProjectController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-        $formFields = $request->validate([
+        $request->validate([
             'title' => ['required', Rule::unique('projects', 'title')],
             'tags' => 'required',
             'date_created' => 'required',
@@ -68,12 +68,22 @@ class ProjectController extends Controller
 
         /* File Upload */
         if ($request->hasFile('image')) {
-            $formFields['image'] = $request->file('image')->store('images', 'public');
+            $image = $request->file('image')->store('images', 'public');
         }
 
-        $formFields = Project::create();
+        $project = Project::create([
+            'title' => $request->title,
+            'tags' => $request->tags,
+            'date_created' => $request->date_created,
+            'website' => $request->website,
+            'email' => $request->email,
+            'description' => $request->description,
+            'creator_id' => $request->creator_id,
+            'image' => $image
+        ]);
 
-        $formFields->developers()->attach($request->developers);
+        $project->developers()->attach($request->developers);
+
 
         return to_route('admin.projects.index')->with('message', 'Project Created successfully');
     }
@@ -86,8 +96,9 @@ class ProjectController extends Controller
         $user->authorizeRoles('admin');
 
         $creators = Creator::all();
+        $developers = Developer::all();
 
-        return view('admin.projects.edit', ['project' => $project])->with('creators', $creators);
+        return view('admin.projects.edit', ['project' => $project])->with('creators', $creators)->with('developers', $developers);
     }
 
 
@@ -105,7 +116,8 @@ class ProjectController extends Controller
             'website' => ['required', 'url'],
             'email' => ['required', 'email'],
             'description' => 'required',
-            'creator_id' => 'required'
+            'creator_id' => 'required',
+            'developer_id' => 'required'
         ]);
 
 
