@@ -90,6 +90,8 @@ class DeveloperController extends Controller
         }
 
         $user->authorizeRoles('admin');
+
+        return view('admin.developers.show')->with('developer', $developer);
     }
 
     /**

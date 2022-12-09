@@ -92,17 +92,17 @@ class CreatorController extends Controller
     public function show(Creator $creator)
     {
         $user = Auth::user();
+        if ($user->hasRole('user')) {
+            return view('user.creators.show')->with('creator', $creator);
+        }
         /* If user is not authorised, return with a 403 error message */
         if (!Auth::id()) {
             return abort(403);
         }
-        
-        if ($user->hasRole('user')) {
-            return view('user.creators.show')->with('creator', $creator);
-        }
 
         $user->authorizeRoles('admin');
 
+        return view('admin.creators.show')->with('creator', $creator);
     }
 
     /**
