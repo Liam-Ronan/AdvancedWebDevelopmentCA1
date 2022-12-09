@@ -106,6 +106,8 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
 
+        /* dd($request); */
+
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
@@ -116,8 +118,7 @@ class ProjectController extends Controller
             'website' => ['required', 'url'],
             'email' => ['required', 'email'],
             'description' => 'required',
-            'creator_id' => 'required'
-            /* 'developer_id' => 'required' */
+            'creator_id' => 'required',
         ]);
 
 
@@ -127,6 +128,9 @@ class ProjectController extends Controller
         }
 
         $project->update($formFields);
+
+        $project->developers()->attach($request->developers);
+
 
         return to_route('admin.projects.index')->with('message', 'Project Updated successfully!');
     }

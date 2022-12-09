@@ -18,7 +18,7 @@ class DeveloperController extends Controller
     public function index()
     {
         $user = Auth::user();
-        /* $user->authorizeRoles('admin'); */
+        $user->authorizeRoles('admin');
 
         $developers = Developer::all();
 

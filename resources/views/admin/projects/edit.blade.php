@@ -83,7 +83,7 @@
             <div class="form-group mb-6">
                 <label for="creator"  class="inline-block text-lg mb-2">Creator:</label>
                 <select name="creator_id">
-                    <option value="{{old('creator_id')}}">{{$project->creator->name}}</option>
+                    <option value="{{$project->creator->id}}">{{$project->creator->name}}</option>
                     @foreach ($creators as $creator)
                         <option value="{{$creator->id}}"
                              {{(old('creator_id') == $creator->id) ? "selected" : ""}}>
@@ -98,28 +98,12 @@
             </div>
 
             <div class="form-group mb-6">
-                <label for="developers"  class="inline-block text-lg mb-2">Developer:</label>
-                <select name="developer_id">
-                    @foreach ($developers as $developer)
-                        <option value="{{$developer->id}}"
-                             {{(old('developer_id') == $developer->id) ? "selected" : ""}}>
-                            {{$developer->name}}
-                        </option>
-                    @endforeach
-                
-                    @error('creator')
-                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                    @enderror
-                </select>
-            </div>
-
-     {{--        <div class="form-group mb-6">
                 <label for="devlopers"> <strong> Developers: </strong> <br> </label>
                 @foreach($developers as $developer)
                     <input type="checkbox", value="{{$developer->id}}" name="developers[]">
                     {{$developer->name}}
                 @endforeach
-            </div> --}}
+            </div>
 
             <div class="mb-6">
                 <button class="bg-black text-white rounded py-2 px-4 hover:opacity-80">Update Project</button>
