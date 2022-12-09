@@ -24,13 +24,4 @@ class ProjectController extends Controller
         return view('user.projects.show', ['project' => $project]);
     }
 
-    //show create form deleted here
-
-    //store project data deleted here
-
-    //show edit form deleted here
-
-    //Update project data deleted here
-
-    //Delete Project deleted here
 }

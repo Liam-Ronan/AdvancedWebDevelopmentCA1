@@ -50,25 +50,4 @@ Route::resource('user/developers', UserDeveloperController::class)->names('user.
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 
-/* Route::get('/home/creators', [App\Http\Controllers\HomeController::class, 'creatorIndex'])->name('home.creator.index'); */
 
-
-
-
-/* //show create Form
-Route::get('/projects/create', [ProjectController::class, 'create']);
-
-//store project Data
-Route::post('/projects', [ProjectController::class, 'store']);
-
-//show update Form
-Route::get('/projects/{project}/edit', [ProjectController::class, 'edit']);
-
-//Update Project data
-Route::put('/projects/{project}', [ProjectController::class, 'update']);
-
-//Delete Project 
-Route::delete('/projects/{project}', [ProjectController::class, 'destroy']);
-
-//Single project
-Route::get('/projects/{project}', [ProjectController::class, 'show']); */

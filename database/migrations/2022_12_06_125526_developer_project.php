@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        /* Pivot table */
         Schema::create('developer_project', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('developer_id');

@@ -20,14 +20,11 @@ class ProjectController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
+        /* Gets latest projects with the creator and the developers, using the filter method for search bar, and paginates the pages */
         $projects = Project::with('creator')->with('developers')->latest()->filter(request(['tag', 'search']))->paginate(6);
 
         return view('admin.projects.index')->with('projects', $projects);
 
-        /* return view('admin.projects.index', [ */
-        /* Showing a total of 6 projects */
-        /*       'projects' => Project::latest()->filter(request(['tag', 'search']))->paginate(6)
-        ]); */
     }
 
     //show single project
@@ -42,6 +39,7 @@ class ProjectController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
+        /* Getting all creators and developers */
         $creators = Creator::all();
         $developers = Developer::all();
         return view('admin.projects.create')->with('creators', $creators)->with('developers', $developers);
@@ -62,6 +60,7 @@ class ProjectController extends Controller
             'email' => ['required', 'email'],
             'description' => 'required',
             'creator_id' => 'required',
+            /* Checks to see if developers id exists */
             'developers' => ['required', 'exists:developers,id']
         ]);
 
@@ -82,6 +81,7 @@ class ProjectController extends Controller
             'image' => $image
         ]);
 
+        /* Attaching the developers onto the projects with developer id. Calling the developers() method from the developer model */
         $project->developers()->attach($request->developers);
 
 
@@ -98,6 +98,7 @@ class ProjectController extends Controller
         $creators = Creator::all();
         $developers = Developer::all();
 
+        
         return view('admin.projects.edit', ['project' => $project])->with('creators', $creators)->with('developers', $developers);
     }
 

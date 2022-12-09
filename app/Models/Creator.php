@@ -12,6 +12,7 @@ class Creator extends Model
 
     public function projects()
     {
+        /* Ensuring that creators have many projects */
         return $this->hasMany(Project::class);
     }
 }

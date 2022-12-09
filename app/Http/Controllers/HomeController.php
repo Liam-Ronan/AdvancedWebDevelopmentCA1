@@ -23,6 +23,7 @@ class HomeController extends Controller
         $user = Auth::user();
         $home = 'home';
 
+        /* Checks to see what role the user has */
         if($user->hasRole('admin')) {
             $home = 'admin.projects.index';
         }

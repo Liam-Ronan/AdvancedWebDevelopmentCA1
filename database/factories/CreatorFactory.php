@@ -17,6 +17,7 @@ class CreatorFactory extends Factory
     public function definition()
     {
         return [
+            /* Creating fake data for a creator */
             'name' => $this->faker->name,
             'address' => $this->faker->address,
             'bio' => $this->faker->paragraph(5),

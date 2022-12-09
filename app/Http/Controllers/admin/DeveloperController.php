@@ -18,13 +18,15 @@ class DeveloperController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $user->authorizeRoles('admin');
 
         $developers = Developer::all();
 
         if ($user->hasRole('user')) {
             return view('user.developers.index')->with('developers', $developers);
         }
+
+        $user->authorizeRoles('admin');
+
 
         return view('admin.developers.index')->with('developers', $developers);
     }
@@ -79,13 +81,15 @@ class DeveloperController extends Controller
     public function show(Developer $developer)
     {
         $user = Auth::user();
-        $user->authorizeRoles('admin');
-
         if (!Auth::id()) {
             return abort(403);
         }
 
-        return view('admin.developers.show')->with('developer', $developer);
+        if ($user->hasRole('user')) {
+            return view('user.developers.show')->with('developer', $developer);
+        }
+
+        $user->authorizeRoles('admin');
     }
 
     /**

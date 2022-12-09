@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        /* the creator_id within projects references the id in the creators table */
         Schema::table('projects', function (Blueprint $table) {
             $table->unsignedBigInteger('creator_id');
             $table->foreign('creator_id')->references('id')->on('creators')->onUpdate('cascade')->onDelete('cascade');

@@ -17,6 +17,7 @@ class DeveloperFactory extends Factory
     public function definition()
     {
         return [
+             /* Creating fake data for a dev */
             'name' => $this->faker->name,
             'bio' => $this->faker->realText,
             'address' => $this->faker->address,

@@ -36,10 +36,12 @@ class Project extends Model
     }
 
     public function creator() {
+        /* projects belong to creators */
         return $this->belongsTo(Creator::class);
     }
 
     public function developers() {
+        /* Projects has many devs */
         return $this->belongstoMany(Developer::class)->withTimestamps();
     }
 
